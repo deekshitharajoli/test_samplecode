@@ -1,0 +1,53 @@
+	-- Test templates for string functions
+
+-- Template for is_palindrome
+operation is_palindrome(s : string) returns boolean
+    precondition
+        len(s) > 0
+    postcondition
+        is_palindrome(s) == (result == (s == reverse_string(s)))
+
+-- Template for reverse_string
+operation reverse_string(s : string) returns string
+    precondition
+        len(s) > 0
+    postcondition
+        reverse_string(s) == result
+
+-- Template for count_vowels
+operation count_vowels(s : string) returns integer
+    precondition
+        len(s) > 0
+    postcondition
+        count_vowels(s) == result
+
+-- Template for remove_duplicates
+operation remove_duplicates(s : string) returns string
+    precondition
+        len(s) > 0
+    postcondition
+        remove_duplicates(s) == result
+
+-- Template for is_valid_email
+operation is_valid_email(email : string) returns boolean
+    precondition
+        len(email) > 0
+    postcondition
+        is_valid_email(email) == result
+
+-- Template for is_valid_password
+operation is_valid_password(password : string) returns boolean
+    precondition
+        len(password) > 0
+    postcondition
+        is_valid_password(password) == result
+
+-- Main test template
+testcase main_test
+    -- Add your test steps here
+    is_palindrome("test")
+    reverse_string("test")
+    count_vowels("test")
+    remove_duplicates("test")
+    is_valid_email("test@example.com")
+    is_valid_password("test1234")
