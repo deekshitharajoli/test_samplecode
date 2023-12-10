@@ -1,0 +1,28 @@
+# TSTL script for testing CreditCard class and Luhn algorithm
+
+# Importing necessary modules
+@import credit_card_module
+
+# Declare pools
+pool: card_number 3
+
+# Define symbol generators
+card_number := "79927398713"
+~card_number := "4388576018402626"
+~card_number := "379354508162306"
+
+# Test cases for CreditCard class
+card := CreditCard.set_card(card_number)
+assert card.company == "Company : Gasoline Card"
+assert card.card_no == card_number
+assert card.first_check() == "First check : Valid in terms of length."
+assert card.checksum == "#CHECKSUM# : 3"
+assert card.validate() == "Valid Card"
+
+# Additional test cases
+another_card := CreditCard.set_card(~card_number)
+assert another_card.company == "Company : Maestro Card"
+assert another_card.card_no == ~card_number
+assert another_card.first_check() == "First check : Check Card number once again it must be of 13 or 16 digits long."
+assert another_card.checksum == "#CHECKSUM# : 6"
+assert another_card.validate() == "Invalid Card"
