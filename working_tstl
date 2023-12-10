@@ -1,0 +1,35 @@
+# TSTL script for testing string manipulation functions
+
+# Importing necessary modules
+@import string_operations
+
+# Declare pools
+pool: input_string 5
+pool: email 5
+pool: password 5
+
+# Define symbol generators
+input_string := "Hello, World!"
+~input_string := "abc123"
+~input_string := "Special!@#"
+~input_string := "Testing 123"
+~input_string := ~input_string
+
+email := "example@email.com"
+~email := "invalid_email"
+~email := "missing_at_symbol@.com"
+~email := ~email
+
+password := "StrongPassword123"
+~password := "weak"
+~password := "NoDigitsOrSpecialCharacters"
+~password := ~password
+
+# Test cases for string manipulations and validations
+assert string_operations.reverse_string(input_string) == "dlroW ,olleH"
+assert string_operations.is_palindrome(input_string) == False
+assert string_operations.count_vowels(input_string) == 4
+assert string_operations.remove_duplicates(input_string) == "Helo, Wrd!"
+
+assert string_operations.is_valid_email(email) == True
+assert string_operations.is_valid_password(password) == True
